@@ -1,26 +1,28 @@
 const atm = require("./atm");
 const prompt = require("prompt-sync")();
-let userDone = false;
 atm.validPin();
 
-let key = prompt('')
-do {
-    
-  switch (key) {
+function mainMenu() {
+  const menu = parseInt(
+    prompt(
+      "Welcome Customer! Please select from the options below:(1)Balance(2)Withdraw(3)Deposit(4)Exit"
+    )
+  );
+  switch (menu) {
     case 1:
-      break;
+      atm.getBalance();
+      return mainMenu();
     case 2:
-      break;
+      atm.withDraw();
+      return mainMenu();
     case 3:
-      break;
+      atm.deposit();
+      return mainMenu();
     case 4:
-      break;
-    case 5:
-      break;
-    case 6:
-        userDone = true;
-      break;
+      return console.log("Have a great day!");
     default:
-      break;
+      console.log("Please select a valid option.");
+      return mainMenu();
   }
-} while (userDone === false);
+}
+mainMenu();

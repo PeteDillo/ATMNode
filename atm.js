@@ -15,22 +15,17 @@ function validPin() {
   }
 }
 
-function withDraw() {
-    let userWithdraw = parseInt(prompt('Enter withdraw amount.'))
-
-    if(Number.isInteger(userWithdraw) && userWithdraw <= account.balance){
-        account.balance =+ userWithdraw
-        getBalance()
-    }
-    else if(!Number.isInteger(userWithdraw)){
-        console.log(`Please enter only numbers.`)
-        return withDraw()
-    }
-    else{
-        console.log("Error Insuffience Funds")
-        getBalance()
-    }
-
+function withDraw(){
+  let withdrawAmount = parseInt(prompt("How much would you like to withdraw?"));
+  if (withdrawAmount <= account.balance){
+      account.balance = account.balance - withdrawAmount;
+      //wallet.amount = wallet.amount + withdrawAmount;
+      console.log(`You have withdrew $${withdrawAmount}. Your new balance is $${account.balance}`);
+  }
+  else{
+      console.log("Insufficent funds. Please Try Again");
+      return withDraw();
+  }
 }
 
 function deposit() {
@@ -41,7 +36,7 @@ function deposit() {
         getBalance()
     }
     else if(!Number.isInteger(userDeposit)){
-        console.log(`Please enter only numbers.`)
+        console.log("Please enter only numbers.")
         return deposit()
     }
 }
