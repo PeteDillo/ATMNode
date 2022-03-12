@@ -3,7 +3,7 @@ const account = require("./account");
 const prompt = require("prompt-sync")();
 
 function getBalance() {
-  console.log(`Your account balance is ${account.balance}`);
+  console.log(`Your account balance is $${account.balance}`);
 }
 function validPin() {
   let userPin = prompt("Please enter your pin.");
@@ -32,7 +32,7 @@ function deposit() {
     let userDeposit = parseInt(prompt('Enter withdraw amount.'))
 
     if(Number.isInteger(userDeposit)){
-        account.balance =+ userDeposit
+        account.balance = account.balance+ userDeposit
         getBalance()
     }
     else if(!Number.isInteger(userDeposit)){
