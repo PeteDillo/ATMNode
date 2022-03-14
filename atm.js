@@ -1,5 +1,6 @@
 "use strict";
 const account = require("./account");
+const wallet = require("./wallet");
 const prompt = require("prompt-sync")();
 
 function getBalance() {
@@ -19,8 +20,8 @@ function withDraw(){
   let withdrawAmount = parseInt(prompt("How much would you like to withdraw?"));
   if (withdrawAmount <= account.balance){
       account.balance = account.balance - withdrawAmount;
-      //wallet.amount = wallet.amount + withdrawAmount;
-      console.log(`You have withdrew $${withdrawAmount}. Your new balance is $${account.balance}`);
+      wallet.cash = wallet.cash + withdrawAmount;
+      console.log(`You have withdrew $${withdrawAmount}. Your new balance is $${account.balance} You now have $${wallet.cash}`);
   }
   else{
       console.log("Insufficent funds. Please Try Again");
